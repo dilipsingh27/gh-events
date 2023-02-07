@@ -3,7 +3,20 @@ on:
   pull_request:
     types:
       - opened
+    branches:
+      - main        # main
+      - 'dev-*'     # dev-new dev-this-is-new         this is for all branches starting with dev- this also allow any character other than slash. thats the difference bw single * and double **
+      - 'feat/**'   # feat/new feat/new/button         this is for all branches starting with feat/ this also cover any character after that including slashes too bcz of **
+      
   workflow_dispatch:
+  push:
+    branches:
+      - main        # main
+      - 'dev-*'     # dev-new dev-this-is-new         this is for all branches starting with dev- this also allow any character other than slash. thats the difference bw single * and double **
+      - 'feat/**'   # feat/new feat/new/button         this is for all branches starting with feat/ this also cover any character after that including slashes too bcz of **
+      #developer-1 this is not valid branch which can trigger the workflow
+    paths-ignore:
+      - '.github/workflows/*'
 
 jobs:
   deploy:
